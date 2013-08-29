@@ -354,7 +354,8 @@ $prefix-for-spec: true !default; //required for keyframe mixin
 //7.8 background stripes
 // thanks css trick:http://css-tricks.com/striped-background-gradients/
 //eg.
-
+// 1. define var $b1: color1，color2 ....
+// 2. @include background-stripes($bp1,left, to right);
 @mixin background-image($undirection,$direction,$gradient){
 	background-image: -webkit-linear-gradient($undirection,$gradient);
 	background-image: -moz-linear-gradient($undirection,$gradient);
