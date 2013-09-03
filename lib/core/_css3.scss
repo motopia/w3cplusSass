@@ -431,3 +431,52 @@ $prefix-for-spec: true !default; //required for keyframe mixin
 	}
 }
 
+//----------------------------------------------
+// create icon by font face
+// 1. @include font-face("Icons","../fonts/typicons");
+// 2. @include icon;
+// 3. @include icon("before",false,"battery-low")
+// OR
+// 1. @include font-face("Icons","../fonts/typicons");
+// 2. @include icon("before",true,"battery-low")
+//----------------------------------------------
+
+//To sumulate associative arrays
+//source:http://hugogiraudel.com/2013/08/12/sass-functions/#mapping
+
+@function match($haystack,$needle){
+	@each $item in $haystack {
+		$index:index($item,$needle);
+		@if $index {
+			$return: if($index == 1, 2, $index);
+			@return nth($item,$return);
+		}
+	}
+	@return false;
+}
+
+//For adding icons to elements using css pseudo-elements
+@mixin icon($position:"before",$styles:true,$icon:false){
+	//Either a :before or :after pseudo-element, defaulting to :before
+	&:#{$position} {
+		@if $icon {
+			//icon has been specified
+			content: match($icons,$icon);
+		}
+		@if $styles {
+			//Suportive icon styles have been specified
+			font: {
+				family: "Icons";
+				style: normal;
+				weight: normal;
+				variant: normal;
+			}
+			text-transform: none;
+			speak: none;
+			line-height: 1;
+			-webkit-font-smoothing: antialiased;
+		}
+		//Include any extra rules supplied for the pseudo-element
+		@content;
+	}
+}
