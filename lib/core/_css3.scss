@@ -386,10 +386,45 @@ $prefix-for-spec: true !default; //required for keyframe mixin
 	}
 	@include background-image($undirection,$direction,$gradient);
 }
+
 //------------------------------------------
 // 8. transition
+// Shorthand mixin. Supports multiple parentheses-deliminated values for each variable
+//eg: @include transition(all 2s ease-in-out);
+//		@include transition(opacity 1s ease-in 2s,width 2s ease-out);
+//		@include transition-property(transform,opacity);
+//Thanks:https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_transition.scss
 //------------------------------------------
 
+@mixin transition($properties...){
+	@if length($properties) >= 1 {
+		@include prefixer(transition,$properties,webkit moz ms spec);
+	}
+	@else {
+		$properties: all .15s ease-out 0s;
+		@include prefixer(transition,$properties,webkit moz ms spec);
+	}
+}
+
+@mixin transition-property($properties...){
+	-webkit-transition-property: transitionPropertyNames($properties,"webkit");
+	-moz-transition-property: transitionPropertyNames($properties,"moz");
+	-ms-transition-property: transitionPropertyNames($properties,"ms");
+	transition-property: transitionPropertyNames($properties,false);
+}
+
+@mixin transition-duration($times...){
+	@include prefixer(transition-duration,$times,webkit moz ms spec);
+}
+
+@mixin transition-timing-function($motions...){
+	//ease|linear|ease-in|ease-out|ease-in-out|step()|cubic-bezier()
+	@include prefixer(transition-timing-function,$motions,webkit moz ms spec);
+}
+
+@mixin transition-delay($times...){
+	@include prefixer(transition-delay,$times,webkit moz ms spec);
+}
 //------------------------------------------
 //9. animation
 //------------------------------------------
