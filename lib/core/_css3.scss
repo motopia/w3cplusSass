@@ -429,6 +429,120 @@ $prefix-for-spec: true !default; //required for keyframe mixin
 //9. animation
 //------------------------------------------
 
+//9.1 keyframes
+//Adds keyframes blocks for supported prefixes,removing redundant prefixes in the block's content
+//Thanks:https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_keyframes.scss
+//eg: @include keyframes(fadeIn){
+//			from {@include transform(scale(0))}	
+//			to {@include transform(scale(1))}	
+//		}
+
+@mixin keyframes($name){
+	$original-prefix-for-webkit: $prefix-for-webkit;
+	$original-prefix-for-mozilla: $prefix-for-mozilla;
+	$original-prefix-for-microsoft: $prefix-for-microsoft;
+	$original-prefix-for-opera: $prefix-for-opera;
+	$original-prefix-for-spec: $prefix-for-spec;
+	
+	@if $original-prefix-for-webkit {
+		@include disable-prefix-for-all();
+		$prefix-for-webkit: true;
+		@-webkit-keyframes #{$name}{
+			@content;
+		}
+	}
+	
+	@if $original-prefix-for-mozilla {
+		@include disable-prefix-for-all();
+		$prefix-for-mozilla: true;
+		@-moz-keyframes #{$name}{
+			@content;
+		}
+	}
+	
+	@if $original-prefix-for-microsoft {
+		@include disable-prefix-for-all();
+		$prefix-for-microsoft: true;
+		@-ms-keyframes #{$name}{
+			@content;
+		}
+	}
+	
+	@if $original-prefix-for-opera {
+		@include disable-prefix-for-all();
+		$prefix-for-opera: true;
+		@-o-keyframes #{$name}{
+			@content;
+		}
+	}
+	
+	@if $original-prefix-for-spec {
+		@include disable-prefix-for-all();
+		$prefix-for-spec: true;
+		@keyframes #{$name}{
+			@content;
+		}
+	}
+	
+	$prefix-for-webkit: $original-prefix-for-webkit;
+	$prefix-for-mozilla: $original-prefix-for-mozilla;
+	$prefix-for-microsoft: $original-prefix-for-microsoft;
+	$prefix-for-opera: $original-prefix-for-opera;
+	$prefix-for-spec: $original-prefix-for-spec;
+}
+
+
+//9.2 css3 animation
+//Each of these mixins support comma separated lists of values,which allows different transitions for individual properties to be described in a single style rule.
+//Each value in the list corresponds to the value at that same position in the other properties.
+//Thanks:https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_animation.scss
+
+
+//Official animation shorthand property
+// http://www.w3.org/TR/css3-animations/#animation-shorthand-property
+// animation-name | animation-duration | animation-timing-function | animation-delay | animation-iteration-count | animation-direction | animation-fill-mode | animation-play-state
+@mixin animation($animations...){
+	@include prefixer(animation,$animations,webkit spec);
+}
+
+//Individual animation properties
+@mixin animation-name($names...){
+	@include prefixer(animation-name,$names,webkit spec);
+}
+
+@mixin animation-duration($times...){
+	@include prefixer(animation-duration,$times,webkit spec);
+}
+
+@mixin animation-timing-function($motions...){
+	//ease | ease-in | ease-out | ease-in-out | linear | step() | cubic-bezier()
+	@include prefixer(animation-timing-function,$motions,webkit spec);
+}
+
+@mixin animation-delay($times...){
+	@include prefixer(animation-delay,$times,webkit spec);
+}
+
+@mixin animation-iteration-count($values...){
+	// infinite | <number>
+	@include prefixer(animation-iteration-count,$values,webkit spec);
+}
+
+@mixin animation-direction($directions...){
+	// normal | reverse | alternate | alternate-reverse
+	@include prefixer(animation-direction,$directions,webkit spec);
+}
+
+@mixin animation-fill-mode($modes...){
+	// none | forwards | backwards | both
+	@include prefixer(animation-fill-mode,$modes,webkit spec);
+}
+
+@mixin animation-play-state($states...){
+	// running | paused
+	@include prefixer(animation-play-state,$states,webkit spec);
+}
+
 //------------------------------------------
 //10. font-face
 //thanks: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_font-face.scss
