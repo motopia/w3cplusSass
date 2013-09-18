@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+@import "../../lib/module/animations/animations.scss";
+
+//Bounce Effect
+
+@include keyframes(bounce){
+	0%,20%,50%,80%,100% {
+		@include translateY(0);
+	}
+	40% {
+		@include translateY(-30px);
+	}
+	60% {
+		@include translateY(-15px);
+	}
+}
+
+%bounce {
+	@include animation-name(bounce);
+	@extend %animated;
+}
