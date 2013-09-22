@@ -2,12 +2,6 @@
 
 @import "../../core/css3.scss";
 
-//-------------------------------------
-// animations source
-//Thanks:https://github.com/daneden/animate.css
-//--------------------------------------
-
-//1. common animation style
 %animated {
 	@include backface-visibility;
 	@include animation-duration(1s);
@@ -17,7 +11,17 @@
 }
 
 
-%shake, 
-%tada {
+//Flash Effect
+@include keyframes(flash){
+	0%,50%,100%{
+		opacity: 1;
+	}
+	25%,75%{
+		opacity: 0;
+	}
+}
+
+%flash {
+	@include animation-name(flash);
 	@extend %animated;
 }

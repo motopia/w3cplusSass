@@ -1,6 +1,15 @@
 @charset "UTF-8";
 
-@import "../../lib/module/animations/animations.scss";
+@import "../../core/css3.scss";
+
+%animated {
+	@include backface-visibility;
+	@include animation-duration(1s);
+	@include animation-delay(.2s);
+	@include animation-timing-function(ease);
+	@include animation-fill-mode(both);
+}
+
 
 //Bounce Effect
 

@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+//Shake Effect
+@include keyframes(tada){
+	0% {
+		@include scale(1);
+	}
+	10%,20% {
+		@include transform(scale(.9) rotate(-3deg));
+	}
+	30%,50%,70%,90%{
+		@include transform(scale(1.1) rotate(3deg));
+	}
+	40%,60%,80%{
+		@include transform(scale(1.1) rotate(-3deg));
+	}
+	100%{
+		@include transform(scale(1) rotate(0));
+	}
+}
+
+%tada {
+	@include animation-name(tada);
+	@extend %animated;
+}

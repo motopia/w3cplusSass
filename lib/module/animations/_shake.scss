@@ -2,12 +2,7 @@
 
 @import "../../core/css3.scss";
 
-//-------------------------------------
-// animations source
-//Thanks:https://github.com/daneden/animate.css
-//--------------------------------------
 
-//1. common animation style
 %animated {
 	@include backface-visibility;
 	@include animation-duration(1s);
@@ -16,8 +11,20 @@
 	@include animation-fill-mode(both);
 }
 
+//Shake Effect
+@include keyframes(shake){
+	0%,100%{
+		@include translateX(0);
+	}
+	10%,30%,50%,70%,90%{
+		@include translateX(-10px);
+	}
+	20%,40%,60%,80%{
+		@include translateX(10px);
+	}
+}
 
-%shake, 
-%tada {
+%shake {
+	@include animation-name(shake);
 	@extend %animated;
 }
