@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//OpenDownLeft Effect
+//Thanks: https://github.com/miniMAC/magic/blob/master/magic.css by Christian (http://www.minimamente.com/)
+
+@include keyframes(openDownLeft){
+	0% {
+		@include transform-origin(bottom left);
+		@include rotate(0deg);
+		@include animation-timing-function(ease-out);
+	}
+	100% {
+		@include transform-origin(bottom left);
+		@include rotate(-110deg);
+		@include animation-timing-function(ease-in-out);
+	}
+}
+
+%openDownLeft {
+	@include animation-name(openDownLeft);
+	@include animated;
+}

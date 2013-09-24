@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//Magic Effect
+//Thanks: https://github.com/miniMAC/magic/blob/master/magic.css by Christian (http://www.minimamente.com/)
+
+@include keyframes(magic){
+	0% {
+		opacity: 1;
+		@include transform-origin(100% 200%);
+		@include transform(scale(1,1) rotate(0deg));
+	}
+	100% {
+		opacity: 0;
+		@include transform-origin(200% 500%);
+		@include transform(scale(0,0) rotate(270deg));
+	}
+}
+
+%magic {
+	@include animation-name(magic);
+	@include animated;
+}
