@@ -543,6 +543,15 @@ $prefix-for-spec: true !default; //required for keyframe mixin
 	@include prefixer(animation-play-state,$states,webkit spec);
 }
 
+//for animation module
+@mixin animated($backface-visibility:hidden,$animation-duration:1s,$animation-delay:.2s,$animation-timing-function:ease,$animation-fill-mode:both) {
+	@include backface-visibility($backface-visibility);
+	@include animation-duration($animation-duration);
+	@include animation-delay($animation-delay);
+	@include animation-timing-function($animation-timing-function);
+	@include animation-fill-mode($animation-fill-mode);
+}
+
 //------------------------------------------
 //10. font-face
 //thanks: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_font-face.scss
