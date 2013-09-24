@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//SlideInLeft Effect
+
+@include keyframes(slideInLeft){
+	0% {
+		opacity: 0;
+		@include translateX(-2000px);
+	}
+	100% {
+		@include translateX(0);
+	}
+}
+
+%slideInLeft {
+	@include animation-name(slideInLeft);
+	@include animated;
+}

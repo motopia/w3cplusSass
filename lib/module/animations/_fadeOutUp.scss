@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+//FadeOutUp Effect
+
+@include keyframes(fadeOutUp){
+	0% {
+		opacity: 1;
+		@include translateY(0);
+	}
+	100% {
+		opacity: 0;
+		@include translateY(20px);
+	}
+}
+
+%fadeOutUp {
+	@include animation-name(fadeOutUp);
+	@include animated;
+}

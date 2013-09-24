@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//RotateInDownRight Effect
+
+@include keyframes(rotateInDownRight){
+	0% {
+		opacity: 0;
+		@include transform-origin(right bottom);
+		@include rotate(90deg);
+	}
+	100% {
+		opacity: 1;
+		@include transform-origin(right bottom);
+		@include rotate(0);
+	}
+}
+
+%rotateInDownRight {
+	@include animation-name(rotateInDownRight);
+	@include animated;
+}

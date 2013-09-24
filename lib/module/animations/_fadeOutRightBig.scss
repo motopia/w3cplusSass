@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+//FadeOutRightBig Effect
+
+@include keyframes(fadeOutRightBig){
+	0% {
+		opacity: 1;
+		@include translateX(0);
+	}
+	100% {
+		opacity: 0;
+		@include translateX(2000px);
+	}
+}
+
+%fadeOutRightBig {
+	@include animation-name(fadeOutRightBig);
+	@include animated;
+}

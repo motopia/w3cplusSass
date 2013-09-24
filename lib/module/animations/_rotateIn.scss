@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//RotateIn Effect
+
+@include keyframes(rotateIn){
+	0% {
+		opacity: 0;
+		@include transform-origin(center center);
+		@include rotate(-200deg);
+	}
+	100% {
+		opacity: 1;
+		@include transform-origin(center center);
+		@include rotate(0);
+	}
+}
+
+%rotateIn {
+	@include animation-name(rotateIn);
+	@include animated;
+}

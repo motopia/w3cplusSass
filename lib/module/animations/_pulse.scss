@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+//Pulse Effect
+//originally authored by Nick Pettit - https://github.com/nickpettit/glide
+
+@include keyframes(pulse){
+	0% {
+		@include scale(1);
+	}
+	50% {
+		@include scale(1.1);
+	}
+	100% {
+		@include scale(1);
+	}
+}
+
+%pulse {
+	@include animation-name(pulse);
+	@include animated;
+}

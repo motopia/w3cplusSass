@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+//FadeOutLeft Effect
+
+@include keyframes(fadeOutLeft){
+	0% {
+		opacity: 1;
+		@include translateX(0px);
+	}
+	100% {
+		opacity: 0;
+		@include translateX(-20px);
+	}
+}
+
+%fadeOutLeft {
+	@include animation-name(fadeOutLeft);
+	@include animated;
+}

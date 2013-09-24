@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//LightSpeedOut Effect
+//originally authored by Angelo Rohit - https://github.com/angelorohit
+
+@include keyframes(lightSpeedOut){
+	0% {
+		opacity: 1;
+		@include transform(translateX(0%) skewX(0deg));
+	}
+	100% {
+		opacity: 0;
+		@include transform(translateX(100%) skewX(-30deg));
+	}
+}
+
+%lightSpeedOut {
+	@include animation-name(lightSpeedOut);
+	@include animated(hidden,.25s,.2s,ease-in,both);
+}

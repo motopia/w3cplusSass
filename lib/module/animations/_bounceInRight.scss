@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//BounceInRight Effect
+
+@include keyframes(bounceInRight){
+	0% {
+		opacity: 0;
+		@include translateX(2000px);
+	}
+	60% {
+		opacity: 1;
+		@include translateX(-30px);
+	}
+	80% {
+		@include translateX(10px);
+	}
+	100% {
+		@include translateY(0);
+	}
+}
+
+%bounceInRight {
+	@include animation-name(bounceInRight);
+	@include animated;
+}

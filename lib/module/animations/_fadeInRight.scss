@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+//FadeInRight Effect
+
+@include keyframes(fadeInRight){
+	0% {
+		opacity: 0;
+		@include translateX(20px);
+	}
+	100% {
+		opacity: 1;
+		@include translateX(0);
+	}
+}
+
+%fadeInRight {
+	@include animation-name(fadeInRight);
+	@include animated;
+}

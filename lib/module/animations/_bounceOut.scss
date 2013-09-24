@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//BounceOut Effect
+
+@include keyframes(bounceOut){
+	0% {
+		@include scale(1);
+	}
+	25% {
+		@include scale(。95);
+	}
+	75% {
+		opacity: 1;
+		@include scale(1.1);
+	}
+	100% {
+		opacity: 0;
+		@include scale(.3);
+	}
+}
+
+%bounceOut {
+	@include animation-name(bounceOut);
+	@include animated;
+}

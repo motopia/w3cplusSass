@@ -3,14 +3,6 @@
 @import "../../core/css3.scss";
 
 
-%animated {
-	@include backface-visibility;
-	@include animation-duration(1s);
-	@include animation-delay(.2s);
-	@include animation-timing-function(ease);
-	@include animation-fill-mode(both);
-}
-
 //Shake Effect
 @include keyframes(shake){
 	0%,100%{
@@ -26,5 +18,5 @@
 
 %shake {
 	@include animation-name(shake);
-	@extend %animated;
+	@include animated;
 }

@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//SlideOutUp Effect
+
+@include keyframes(slideOutUp){
+	0% {
+		@include translateY(0);
+	}
+	100% {
+		opacity: 0;
+		@include translateY(-2000px);
+	}
+}
+
+%slideOutUp {
+	@include animation-name(slideOutUp);
+	@include animated;
+}

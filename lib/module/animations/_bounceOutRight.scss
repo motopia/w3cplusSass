@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//BounceOutRight Effect
+
+@include keyframes(bounceOutRight){
+	0% {
+		@include translateX(0);
+	}
+	20% {
+		opacity: 1;
+		@include translateX(-20px);
+	}
+	100% {
+		opacity: 0;
+		@include translateX(2000px);
+	}
+}
+
+%bounceOutRight {
+	@include animation-name(bounceOutRight);
+	@include animated;
+}

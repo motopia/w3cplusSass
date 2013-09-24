@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+//FadeInUpBig Effect
+
+@include keyframes(fadeInUpBig){
+	0% {
+		opacity: 0;
+		@include translateY(2000px);
+	}
+	100% {
+		opacity: 1;
+		@include translateY(0);
+	}
+}
+
+%fadeInUpBig {
+	@include animation-name(fadeInUpBig);
+	@include animated;
+}

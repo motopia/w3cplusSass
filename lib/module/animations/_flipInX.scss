@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+//FlipInX Effect
+
+@include keyframes(flipInX){
+	0% {
+		@include transform(perspective(400px) rotateX(90deg));
+		opacity: 0;
+	}
+	40% {
+		@include transform(perspective(400px) rotateX(-10deg));
+	}
+	70% {
+		@include transform(perspective(400px) rotateX(10deg));
+	}
+	100% {
+		@include transform(perspective(400px) rotateX(0deg));
+		opacity: 1;
+	}
+}
+
+%flipInX {
+	@include animation-name(flipInX);
+	@include animated(visible !important,1s,.2s,ease,both);
+}
