@@ -4,6 +4,8 @@
 
 
 //Flash Effect
+//Thanks: https://github.com/daneden/animate.css by daneden (http://daneden.me/animate/)
+
 @include keyframes(flash){
 	0%,50%,100%{
 		opacity: 1;

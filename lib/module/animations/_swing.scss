@@ -4,6 +4,8 @@
 
 
 //Swing Effect
+//Thanks: https://github.com/daneden/animate.css by daneden (http://daneden.me/animate/)
+
 @include keyframes(swing){
 	20%,40%,60%,80%,100% {
 		@include transform-origin(top center);

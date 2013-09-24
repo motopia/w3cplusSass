@@ -5,7 +5,7 @@
 
 
 //Bounce Effect
-
+//Thanks: https://github.com/daneden/animate.css by daneden (http://daneden.me/animate/)
 @include keyframes(bounce){
 	0%,20%,50%,80%,100% {
 		@include translateY(0);
