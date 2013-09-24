@@ -2,13 +2,6 @@
 
 @import "../../core/css3.scss";
 
-%animated {
-	@include backface-visibility;
-	@include animation-duration(1s);
-	@include animation-delay(.2s);
-	@include animation-timing-function(ease);
-	@include animation-fill-mode(both);
-}
 
 
 //Bounce Effect
@@ -27,5 +20,5 @@
 
 %bounce {
 	@include animation-name(bounce);
-	@extend %animated;
+	@include animated;
 }

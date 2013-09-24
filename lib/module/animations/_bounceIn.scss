@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//BounceIn Effect
+
+@include keyframes(bounceIn){
+	0% {
+		opacity: 0;
+		@include scale(.3);
+	}
+	50% {
+		opacity: 1;
+		@include scale(1.05);
+	}
+	70% {
+		@include scale(.9);
+	}
+	100% {
+		@include scale(1);
+	}
+}
+
+%bounceIn {
+	@include animation-name(bounceIn);
+	@include animated;
+}
