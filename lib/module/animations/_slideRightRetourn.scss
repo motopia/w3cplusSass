@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//SlideRightRetourn Effect
+//Thanks: https://github.com/miniMAC/magic/blob/master/magic.css by Christian (http://www.minimamente.com/)
+
+@include keyframes(slideRightRetourn){
+	0% {
+		@include transform-origin(0 0);
+		@include translateX(100%);
+	}
+	100% {
+		@include transform-origin(0 0);
+		@include translateX(0);
+	}
+}
+
+%slideRightRetourn {
+	@include animation-name(slideRightRetourn);
+	@include animated;
+}

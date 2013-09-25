@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//PuffOut Effect
+//Thanks: https://github.com/miniMAC/magic/blob/master/magic.css by Christian (http://www.minimamente.com/)
+
+@include keyframes(puffOut){
+	0% {
+		opacity: 1;
+		@include transform-origin(50% 50%);
+		@include scale(1);
+	}
+	100% {
+		opacity: 0;
+		@include transform-origin(50% 50%);
+		@include scale(2);
+	}
+}
+
+%puffOut {
+	@include animation-name(puffOut);
+	@include animated;
+}

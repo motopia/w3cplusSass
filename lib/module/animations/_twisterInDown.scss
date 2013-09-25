@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//TwisterInDown Effect
+//Thanks: https://github.com/miniMAC/magic/blob/master/magic.css by Christian (http://www.minimamente.com/)
+
+@include keyframes(twisterInDown){
+	0% {
+		opacity: 0;
+		@include transform-origin(0 100%);
+		@include transform(scale(0) rotate(360deg) translateY(-100%));
+	}
+	30% {
+		@include transform-origin(0 100%);
+		@include transform(scale(0) rotate(360deg) translateY(-100%));
+	}
+	100% {
+		opacity: 1;
+		@include transform-origin(100% 100%);
+		@include transform(scale(1) rotate(0deg) translateY(0));
+	}
+}
+
+%twisterInDown {
+	@include animation-name(twisterInDown);
+	@include animated;
+}

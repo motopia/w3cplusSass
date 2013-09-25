@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//OpenUpLeft Effect
+//Thanks: https://github.com/miniMAC/magic/blob/master/magic.css by Christian (http://www.minimamente.com/)
+
+@include keyframes(openUpLeft){
+	0% {
+		@include transform-origin(top left);
+		@include rotate(0deg);
+		@include animation-timing-function(ease-out);
+	}
+	100% {
+		@include transform-origin(top left);
+		@include rotate(110deg);
+		@include animation-timing-function(ease-in-out);
+	}
+}
+
+%openUpLeft {
+	@include animation-name(openUpLeft);
+	@include animated;
+}

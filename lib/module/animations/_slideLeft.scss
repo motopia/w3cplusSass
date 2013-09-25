@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//SlideLeft Effect
+//Thanks: https://github.com/miniMAC/magic/blob/master/magic.css by Christian (http://www.minimamente.com/)
+
+@include keyframes(slideLeft){
+	0% {
+		@include transform-origin(0 0);
+		@include translateX(0);
+	}
+	100% {
+		@include transform-origin(0 0);
+		@include translateX(-100%);
+	}
+}
+
+%slideLeft {
+	@include animation-name(slideLeft);
+	@include animated;
+}

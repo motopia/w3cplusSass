@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//PerspectiveRightRetourn Effect
+//Thanks: https://github.com/miniMAC/magic/blob/master/magic.css by Christian (http://www.minimamente.com/)
+
+@include keyframes(perspectiveRightRetourn){
+	0% {
+		@include transform-origin(100% 0);
+		@include transform(perspective(800px) rotateY(180deg));
+	}
+	100% {
+		@include transform-origin(100% 0);
+		@include transform(perspective(800px) rotateY(0deg));
+	}
+}
+
+%perspectiveRightRetourn {
+	@include animation-name(perspectiveRightRetourn);
+	@include animated(visible !important,1s,.2s,ease,both);
+}

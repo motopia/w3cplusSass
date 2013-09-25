@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//RotateRight Effect
+//Thanks: https://github.com/miniMAC/magic/blob/master/magic.css by Christian (http://www.minimamente.com/)
+
+@include keyframes(rotateRight){
+	0% {
+		@include transform-origin(0 0);
+		@include transform(perspective(800px) rotateY(0deg) translateZ(0));
+	}
+	100% {
+		opacity: 0;
+		@include transform-origin(50% 0);
+		@include transform(perspective(800px) rotateY(-180deg) translateZ(300px));
+	}
+}
+
+%rotateRight {
+	@include animation-name(rotateRight);
+	@include animated(visible !important,1s,.2s,ease,both);
+}

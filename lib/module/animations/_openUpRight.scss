@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//OpenUpRight Effect
+//Thanks: https://github.com/miniMAC/magic/blob/master/magic.css by Christian (http://www.minimamente.com/)
+
+@include keyframes(openUpRight){
+	0% {
+		@include transform-origin(top right);
+		@include rotate(0deg);
+		@include animation-timing-function(ease-out);
+	}
+	100% {
+		@include transform-origin(top right);
+		@include rotate(-110deg);
+		@include animation-timing-function(ease-in-out);
+	}
+}
+
+%openUpRight {
+	@include animation-name(openUpRight);
+	@include animated;
+}

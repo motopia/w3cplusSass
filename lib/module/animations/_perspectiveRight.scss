@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//PerspectiveRight Effect
+//Thanks: https://github.com/miniMAC/magic/blob/master/magic.css by Christian (http://www.minimamente.com/)
+
+@include keyframes(perspectiveRight){
+	0% {
+		@include transform-origin(100% 0);
+		@include transform(perspective(800px) rotateY(0deg));
+	}
+	100% {
+		@include transform-origin(100% 0);
+		@include transform(perspective(800px) rotateY(180deg));
+	}
+}
+
+%perspectiveRight {
+	@include animation-name(perspectiveRight);
+	@include animated(visible !important,1s,.2s,ease,both);
+}

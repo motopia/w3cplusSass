@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+
+
+//Swap Effect
+//Thanks: https://github.com/miniMAC/magic/blob/master/magic.css by Christian (http://www.minimamente.com/)
+
+@include keyframes(swap){
+	0% {
+		opacity: 0;
+		@include transform-origin(0 100%);
+		@include transform(scale(0) translate(-700px,0));
+	}
+	100% {
+		opacity: 1;
+		@include transform-origin(100% 100%);
+		@include transform(scale(1) translate(0,0));
+	}
+}
+
+%swap {
+	@include animation-name(swap);
+	@include animated;
+}
