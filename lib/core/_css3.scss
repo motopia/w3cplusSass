@@ -584,11 +584,11 @@ $prefix-for-spec: true !default; //required for keyframe mixin
 
 //----------------------------------------------
 // create icon by font face
-// 1. @include font-face("Icons","../fonts/typicons");
+// 1. @include font-face($fa-family-name,$file-path,normal,$asset-pipeline:false);
 // 2. @include icon;
 // 3. @include icon("before",false,"battery-low")
 // OR
-// 1. @include font-face("Icons","../fonts/typicons");
+// 1. @include font-face($fa-family-name,$file-path,normal,$asset-pipeline:false);
 // 2. @include icon("before",true,"battery-low")
 //----------------------------------------------
 
@@ -617,7 +617,7 @@ $prefix-for-spec: true !default; //required for keyframe mixin
 		@if $styles {
 			//Suportive icon styles have been specified
 			font: {
-				family: "Icons";
+				family: $fa-family-name;
 				style: normal;
 				weight: normal;
 				variant: normal;
@@ -631,3 +631,19 @@ $prefix-for-spec: true !default; //required for keyframe mixin
 		@content;
 	}
 }
+
+//open all icons
+// True: @include get-icons(true);open all icons
+// False: @include get-icons(); not open all icons
+
+@mixin get-icons($All-icons:false) {
+	@if $All-icons {
+		@each $icon in $icons {
+			$name: nth($icon, 1);
+			.#{$fa-css-prefix}#{$name}{
+				@include icon("before",false,$name);
+			}
+		}
+	}
+}
+

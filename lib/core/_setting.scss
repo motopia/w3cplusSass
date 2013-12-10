@@ -18,3 +18,8 @@ $base-font-size: 16 !default;
 
 //3. css3
 $baseRadius: 3px !default;
+
+//4. font awesome
+$fa-css-prefix:  				icon- !default;
+$fa-family-name:                "FontAwesome" !default;
+$file-path:                     "../../lib/module/font-awesome/fonts/fontawesome-webfont" !default;
