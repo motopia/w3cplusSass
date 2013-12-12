@@ -18,6 +18,7 @@
 // 13. emCalc (px to em)
 // 14. remCalc (px to rem)
 // 15. semi-transparent colors
+// 16. BEM Mixins
 //--------------------------------
 
 //--------------------------------
@@ -481,6 +482,31 @@ $inline-block-alignment: middle !default;
     #{$attribute}: $solid-color; //设置不透明的颜色，为不支持rgba颜色的浏览器服务  
   }
   #{$attribute}: $color;//设置透明颜色，为支持rgba颜色的浏览器服务
+}
+
+//-------------------------------------------
+// 16. BEM (need Sass3.3 @at-root)
+// Thanks: Scott Kellum Mixin
+// eg.
+// .block {
+//	@include e(element) {
+//		@include m(modifier){...}
+//	}	
+// }
+//-----------------------------------------
+
+//elements get appended with "__" and the $name 
+@mixin e($name){
+	@at-root #{&}__#{$name}{
+		@content;
+	}
+}
+
+//modifiers get appended with "--" and the $name
+@mixin m($name){
+	@at-root #{&}--#{$name}{
+		@content;
+	}
 }
 
 
