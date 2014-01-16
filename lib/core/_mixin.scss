@@ -19,6 +19,7 @@
 // 14. remCalc (px to rem)
 // 15. semi-transparent colors
 // 16. BEM Mixins
+// 17. Fluid aspect ratios for RWD background images
 //--------------------------------
 
 //--------------------------------
@@ -509,7 +510,35 @@ $inline-block-alignment: middle !default;
 	}
 }
 
+//------------------------------------------
+// 17 Fluid aspect rations for RWD background images
+// Thanks: http://voormedia.com/blog/2012/11/responsive-background-images-with-fixed-or-fluid-aspect-ratios
+// @mixin fluid-ratio
+// 元素纵横比例从4:1（800px）向 2:1(300px)变化
+// eg. @include fluid-ratio(800px 200px,300px 150px) 
+//------------------------------------------
 
+//基于两个维度计算元素的纵横比例
+
+@mixin fluid-ratio($large-size,$small-size) {
+	$width-large: nth($large-size,1); //背景图片大尺寸的宽度
+	$width-small: nth($small-size,1); //背景图片小尺寸的宽度
+	$height-large: nth($large-size,2); //背景图片大尺寸的高度
+	$height-small: nth($small-size,2); //背景图片小尺寸的高度
+	//计算slope => slope = (h2 - h1) / (w2 - w1)
+	//h1:背景图片大尺寸的高度　=> $height-large
+	//w1:背景图片大尺寸的宽度  => $width-large
+	//h2:背景图片小尺寸的高度　=> $height-small
+	//w2:背景图片小尺寸的宽度　=> $width-small
+	$slope: ($height-large - $height-small) / ($width-large - $width-small);
+	//计算元素的初始高度start Height => Start height = h1 - w1 * slope
+	$start-height: $height-small - $width-small * $slope;
+
+	padding-top: $slope * 100%; //你也可以将padding-top换成padding-bottom
+	height: $start-height;
+	@include background-size(cover);
+	background-position: center;
+}
 //------------------------------------------
 // Define Function list
 
