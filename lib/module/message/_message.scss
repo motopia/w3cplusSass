@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+@import "../../core/css3.scss";
+
+//Message Types
+//1. 成功：sucess => #3c763d
+//2. 信息：info => #31708f
+//3. 警告：warning => #8a6d3b
+//4. 危险：danger => #a94442
+
+$message-types: (
+	sucess:  #3c763d,
+	info:    #31708f,
+	warning: #8a6d3b,
+	danger:  #a94442
+) !default;
+
+//Define placeholder for default style
+
+%message {
+	padding: 0.5em;
+	margin-bottom: 0.5em;
+	@include border-radius(0.15em);
+	border: 1px solid;
+}
+
+//define mixin
+
+@mixin message($color) {
+	@if type-of($color) == color {
+		@extend %message;
+		color: $color;
+		border-color: lighten($color, 20%);
+		background: lighten($color, 40%);
+	}
+
+	@else {
+		@warn "#{$color} is not a color for 'message'.";
+	}
+}
+
+@each $type, $color in $message-types {
+	.message-#{$type} {
+		@include message($color);
+	}
+}

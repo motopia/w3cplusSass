@@ -498,14 +498,14 @@ $inline-block-alignment: middle !default;
 
 //elements get appended with "__" and the $name 
 @mixin e($name){
-	@at-root #{&}__#{$name}{
+	&__#{$name}{
 		@content;
 	}
 }
 
 //modifiers get appended with "--" and the $name
 @mixin m($name){
-	@at-root #{&}--#{$name}{
+	&--#{$name}{
 		@content;
 	}
 }
